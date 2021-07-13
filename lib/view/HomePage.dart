@@ -32,6 +32,8 @@ class _HomePageState extends State<HomePage> {
         return Card(
           elevation: 5.0,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('${myModel.album!.data!.id}'),
               SizedBox(height: 5.0),

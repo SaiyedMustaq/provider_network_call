@@ -1,9 +1,7 @@
 class APIExceptions implements Exception {
   final _message;
   final _prefix;
-
   APIExceptions([this._message, this._prefix]);
-
   String toString() {
     return '$_prefix $_message';
   }
