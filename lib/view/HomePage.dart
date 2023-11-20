@@ -16,13 +16,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(widget.title),
+        title: Text(widget.title)
       ),
-      body: Container(
-        height: 250,
-        padding: EdgeInsets.all(20),
-        child: albumTile(context),
-      ),
+      body: albumTile(context),
     );
   }
 

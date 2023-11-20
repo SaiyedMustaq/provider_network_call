@@ -1,24 +1,22 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:network_layer_provider/ContactFetch/ContactFetchPage.dart';
 import 'package:network_layer_provider/providers/album_detais_provider.dart';
+import 'package:network_layer_provider/view/HomePage.dart';
 import 'package:provider/provider.dart';
 
 bool USE_FIRESTORE_EMULATOR = false;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  //await Firebase.initializeApp();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<AlbumProvider>(
-            create: (context) => AlbumProvider()),
+            create: (context) => AlbumProvider(context)),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -26,7 +24,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: MyNavigation(),
+        home: HomePage(
+          title: 'Api Call',
+        ),
       ),
     );
   }
@@ -46,20 +46,6 @@ class MyNavigation extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 25.0),
-            MaterialButton(
-                color: Colors.blueAccent,
-                height: 60.0,
-                elevation: 2.3,
-                colorBrightness: Brightness.light,
-                minWidth: MediaQuery.of(context).size.width,
-                child: Text(
-                  'Goto Contact Fetch Page',
-                  style: TextStyle(color: Colors.white, fontSize: 15.0),
-                ),
-                onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => ContactsPage()));
-                }),
           ],
         ),
       ),

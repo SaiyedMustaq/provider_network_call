@@ -20,7 +20,7 @@ class _MoviesPageState extends State<MoviesPage> {
     var body = {};
 
     http.Response response = await http.post(
-        'https://developers.themoviedb.org/3/movies/get-movie-lists',
+        Uri.parse('https://developers.themoviedb.org/3/movies/get-movie-lists'),
         body: body);
 
     print(response.body.toString());

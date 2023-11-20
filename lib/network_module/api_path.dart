@@ -6,7 +6,7 @@ class APIPathHelper {
   static String getValue(APIPath url) {
     switch (url) {
       case APIPath.fetch_album:
-        return "/posts/1";
+        return "https://jsonplaceholder.typicode.com/posts/1";
       default:
         return "";
     }

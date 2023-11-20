@@ -8,16 +8,16 @@ class AlbumProvider with ChangeNotifier {
   ApiResponse<Album>? _album;
   ApiResponse<Album>? get album => _album;
 
-  AlbumProvider() {
+  AlbumProvider(BuildContext context) {
     _albumRepository = AlbumRepository();
-    fetchAlbumDetailsData();
+    fetchAlbumDetailsData(context);
   }
 
-  fetchAlbumDetailsData() async {
+  fetchAlbumDetailsData(BuildContext context) async {
     _album = ApiResponse.loading('loading....');
     notifyListeners();
     try {
-      Album album = await _albumRepository!.fetchAlbumDetails();
+      Album album = await _albumRepository!.fetchAlbumDetails(context);
       _album = ApiResponse.complete(album);
       notifyListeners();
     } catch (e) {
